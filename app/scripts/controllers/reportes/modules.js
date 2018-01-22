@@ -67,8 +67,8 @@ angular
 					}
 				},
 				url: '/reportes/varios',
-				templateUrl: 'views/reportes/reportesVarios.html',
-				controller: 'ReportesVariosCtrl',
+				templateUrl: 'views/reportes/reportesVarios2.html',
+				controller: 'ReportesVarios2Ctrl',
 				controllerAs: '$ctrl'
 			},
 			{
