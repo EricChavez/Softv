@@ -253,7 +253,9 @@ var filtrosReporte = {
             'estados': vm.estados,
             'servicios': vm.servicios,
             'tiposervicio': (vm.servicioPerm) ? vm.servicioPerm.Clv_TipSerPrincipal : 0,
-            'tecnicosAgenda': vm.tecnicosAgenda
+            'tecnicosAgenda': vm.tecnicosAgenda,
+            'tiposcliente':vm.tiposcliente,
+            'servicios':vm.servicios
           }
           vm.responseparams = par;
         }

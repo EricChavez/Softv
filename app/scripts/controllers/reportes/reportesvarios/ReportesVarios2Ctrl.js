@@ -13,6 +13,25 @@ angular
 
         function GetReport(){
 
+          var obj=  {					
+                'Clv_TipSer':2,			
+                'Op':0,
+                'OpOrdenar':0,				
+                'distribuidores':responseparams.distribuidores,
+                'plazas':responseparams.plazas,
+                'ciudades':responseparams.ciudades,
+                'localidades':responseparams.localidades,
+                'colonias':responseparams.colonias,
+                'servicios':responseparams.servicios,
+                'periodos':responseparams.periodos,
+                'tiposcliente':responseparams.tiposcliente
+
+            }
+            console.log(obj);
+            return ;
+            reportesFactory.GetReportesVarios_1(obj).then(function(result){
+
+            });
         }
 
         function getFilters(op){
@@ -27,7 +46,8 @@ angular
                 { 'step': 6 ,  function :'getCallesByColonia' },
                 { 'step': 7 ,  function :'getServiciosRV' },
                 { 'step': 8 ,  function :'getTipoCliente' },
-                { 'step': 9 ,  function :'getPeriodos' }
+                { 'step': 9 ,  function :'getPeriodos' },
+                { 'step': 9 ,  function :'getRangosFechas' }
               ]
               vm.report='RVDesconectados';
           }           
