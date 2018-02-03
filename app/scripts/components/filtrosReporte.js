@@ -154,7 +154,9 @@ var filtrosReporte = {
           getplazas();
         }
         if (item.function === 'getRangosFechas' && item.step == vm.step) {
-
+          if(report==='RVDesconectados'|| report==='RVSuspendidos'|| report==='RVCorrinete'|| report==='RVAdelantados' ){
+            vm.periodos=vm.options.selectedItems;
+          }
           vm.showfilters = true;
         }
         if (item.function === 'getEstadosByPlaza' && item.step == vm.step) {
@@ -255,7 +257,8 @@ var filtrosReporte = {
             'tiposervicio': (vm.servicioPerm) ? vm.servicioPerm.Clv_TipSerPrincipal : 0,
             'tecnicosAgenda': vm.tecnicosAgenda,
             'tiposcliente':vm.tiposcliente,
-            'servicios':vm.servicios
+            'servicios':vm.servicios,
+            'periodos':vm.periodos
           }
           vm.responseparams = par;
         }
@@ -280,6 +283,7 @@ var filtrosReporte = {
     vm.colonias = [];
     vm.calles = [];
     vm.servicios = [];
+    vm.periodos=[];
     vm.tecnicosAgenda = [];
     vm.tiposcliente = [];
     vm.tipoOrdenList = [{

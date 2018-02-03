@@ -15,22 +15,21 @@ angular
 
           var obj=  {					
                 'Clv_TipSer':2,			
-                'Op':0,
-                'OpOrdenar':0,				
-                'distribuidores':responseparams.distribuidores,
-                'plazas':responseparams.plazas,
-                'ciudades':responseparams.ciudades,
-                'localidades':responseparams.localidades,
-                'colonias':responseparams.colonias,
-                'servicios':responseparams.servicios,
-                'periodos':responseparams.periodos,
-                'tiposcliente':responseparams.tiposcliente
-
+                'Op':1,
+                'OpOrdenar':1,				
+                'distribuidores':vm.responseparams.distribuidores,
+                'plazas':vm.responseparams.plazas,
+                'ciudades':vm.responseparams.ciudades,
+                'localidades':vm.responseparams.localidades,
+                'colonias':vm.responseparams.colonias,
+                'servicios':vm.responseparams.servicios,
+                'periodos':vm.responseparams.periodos,
+                'tiposcliente':vm.responseparams.tiposcliente
             }
             console.log(obj);
-            return ;
+         
             reportesFactory.GetReportesVarios_1(obj).then(function(result){
-
+                vm.url = $sce.trustAsResourceUrl(globalService.getUrlReportes() + '/Reportes/' + result.GetReportesVarios_1Result);
             });
         }
 
@@ -47,9 +46,23 @@ angular
                 { 'step': 7 ,  function :'getServiciosRV' },
                 { 'step': 8 ,  function :'getTipoCliente' },
                 { 'step': 9 ,  function :'getPeriodos' },
-                { 'step': 9 ,  function :'getRangosFechas' }
+                { 'step': 10 ,  function :'getRangosFechas' }
               ]
-              vm.report='RVDesconectados';
+           if(op===1){
+            vm.report='RVDesconectados';
+           }  
+           if(op===2){
+            vm.report='RVSuspendidos';
+           }
+           if(op===3){
+            vm.report='RVCorrinete';
+           }  
+           if(op===4){
+            vm.report='RVAdelantados';
+           }    
+             
+             
+              
           }           
         }
 
