@@ -6,8 +6,7 @@ angular
         this.$onInit = function() {
             reportesVariosFactory.mostrarTipServ().then(function (data) {
                 vm.tipoServicios = data.GetTipServicioListResult;
-                vm.ServicioDigitalInternet = data.GetTipServicioListResult[0];
-                   
+                vm.ServicioDigitalInternet = data.GetTipServicioListResult[0];                
             });
         }
 
@@ -29,13 +28,14 @@ angular
             console.log(obj);
          
             reportesFactory.GetReportesVarios_1(obj).then(function(result){
+                vm.rptpanel=true;
                 vm.url = $sce.trustAsResourceUrl(globalService.getUrlReportes() + '/Reportes/' + result.GetReportesVarios_1Result);
             });
         }
 
         function getFilters(op){
             vm.op=op;
-          if(op===1||op===2 || op===3||op===4){
+          if(op===0||op===2 || op===3||op===4){
             vm.order=[
                 { 'step': 1, function: 'getplazas'},
                 { 'step': 2, function: 'getEstadosByPlaza' },
@@ -70,7 +70,8 @@ angular
         vm.getFilters=getFilters;       
         vm.GetReport=GetReport;
         vm.responseparams={};
-        vm.showfilters=false;      
+        vm.showfilters=false;   
+        vm.rptpanel=false;   
         vm.op=0;        
         vm.order=[];
     });

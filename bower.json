@@ -31,8 +31,9 @@
     "angular-base64": "^2.0.5",
     "angular-bootstrap-colorpicker": "^3.0.31",
     "angular-moment": "^1.1.0",
-    "angular-moment-picker": "moment-picker#^0.10.1",   
-    "angular-file-upload": "^2.5.0"
+    "angular-moment-picker": "moment-picker#^0.10.1",
+    "angular-file-upload": "^2.5.0",
+    "angular-pageslide-directive": "^2.2.0"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0",

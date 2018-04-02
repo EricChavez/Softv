@@ -23,6 +23,11 @@
   </div>
 
   <div class="card-body">
+
+      <pageslide ps-open="$ctrl.rptpanel" ps-size="1000px" > 
+          <iframe src="{{$ctrl.url}}" width="1000px;" height="800px;" ps-zindex="9999"></iframe> 
+      </pageslide> 
+
     <div class="col-md-3">
       <div class="col-md-12">
         <select class="form-control input-sm" id="selectServicioDigitalInternet" ng-model="$ctrl.ServicioDigitalInternet" ng-change="$ctrl.cambiaServicio($ctrl.ServicioDigitalInternet);"
@@ -33,7 +38,7 @@
       <div class="col-md-12">
         <strong>Seleccione el reporte: </strong>
         <div class="list-group">
-          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton1}}" ng-click="$ctrl.getFilters(1)"  >Desconectados </button>
+          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton1}}" ng-click="$ctrl.getFilters(0)"  >Desconectados </button>
           <!-- ng-click="pdistribuidores = true" || goCats = !goCats" -->
           <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton2}}" ng-click="$ctrl.getFilters(2)"  >Suspendidos {{myButton2}}</button>
           <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton3}}" ng-click="$ctrl.getFilters(3)"  >Al corriente </button>
