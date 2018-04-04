@@ -38,10 +38,10 @@
       <div class="col-md-12">
         <strong>Seleccione el reporte: </strong>
         <div class="list-group">
-          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton1}}" ng-click="$ctrl.getFilters(0)"  >Desconectados </button>
+          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton1}}" ng-click="$ctrl.getFilters('DESCONECTADOS')"  >Desconectados </button>
           <!-- ng-click="pdistribuidores = true" || goCats = !goCats" -->
-          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton2}}" ng-click="$ctrl.getFilters(2)"  >Suspendidos {{myButton2}}</button>
-          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton3}}" ng-click="$ctrl.getFilters(3)"  >Al corriente </button>
+          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton2}}" ng-click="$ctrl.getFilters('SUSPENDIDOS')"  >Suspendidos {{myButton2}}</button>
+          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton3}}" ng-click="$ctrl.getFilters('ALCORRIENTE')"  >Al corriente </button>
           <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton4}}" ng-click="$ctrl.getFilters(4)"  >Adelantados </button>
           <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton5}}" ng-click="$ctrl.getFilters(5)"  
             ng-hide="$ctrl.principales">Contrataciones principales </button>
@@ -60,7 +60,7 @@
     <div class="col-md-5" ng-show="$ctrl.showfilters">
 
       <form angular-validator-submit="$ctrl.GetReport()" name="contratoForm" novalidate angular-validator>
-        <div class="col-md-12">
+        <!-- <div class="col-md-12">
           <div class="alert alert-info" role="alert">
             <strong>Atencion !</strong> Selecciona un rango de fechas para el reporte.
           </div>
@@ -88,7 +88,7 @@
                 ng-model="$ctrl.fechafin" ng-model-options="{ updateOn: 'blur' }">
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div class="col-md-12">
           <br>
