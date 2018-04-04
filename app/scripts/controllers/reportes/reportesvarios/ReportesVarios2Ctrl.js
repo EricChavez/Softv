@@ -45,6 +45,29 @@ angular
         });
       }
 
+      if(vm.op === "ALCORRIENTE" ||
+      vm.op === "ADELANTADOS" ||
+      vm.op === "PORINSTALAR"){
+        var estatus =  vm.op       
+        var obj = {
+          estatus: estatus,
+          Clv_TipSer: 2,
+          distribuidores: vm.responseparams.distribuidores,
+          plazas: vm.responseparams.plazas,
+          ciudades: vm.responseparams.ciudades,
+          localidades: vm.responseparams.localidades,
+          colonias: vm.responseparams.colonias,
+          servicios: vm.responseparams.servicios,
+          periodos: vm.responseparams.periodos,
+          tiposcliente: vm.responseparams.tiposcliente,
+          OpOrdenar:1
+          };
+        reportesFactory.GetReportesVarios_1(obj).then(function(result){
+          vm.rptpanel=true;
+          vm.url = $sce.trustAsResourceUrl(globalService.getUrlReportes() + '/Reportes/' + result.GetReportesVarios_1Result);
+      }); 
+      }
+
       /*  var obj=  {					
                 'Clv_TipSer':2,			
                 'Op':1,
@@ -71,8 +94,9 @@ angular
       if (
         op === "DESCONECTADOS" ||
         op === "SUSPENDIDOS" ||
-        op === 3 ||
-        op === 4
+        op === "ALCORRIENTE" ||
+        op === "ADELANTADOS" ||
+        op === "PORINSTALAR"
       ) {
         vm.report = "RVDesconectados";
         vm.order = [

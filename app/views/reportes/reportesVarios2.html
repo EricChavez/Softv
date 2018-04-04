@@ -38,18 +38,16 @@
       <div class="col-md-12">
         <strong>Seleccione el reporte: </strong>
         <div class="list-group">
-          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton1}}" ng-click="$ctrl.getFilters('DESCONECTADOS')"  >Desconectados </button>
-          <!-- ng-click="pdistribuidores = true" || goCats = !goCats" -->
+          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton1}}" ng-click="$ctrl.getFilters('DESCONECTADOS')"  >Desconectados </button>         
           <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton2}}" ng-click="$ctrl.getFilters('SUSPENDIDOS')"  >Suspendidos {{myButton2}}</button>
           <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton3}}" ng-click="$ctrl.getFilters('ALCORRIENTE')"  >Al corriente </button>
-          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton4}}" ng-click="$ctrl.getFilters(4)"  >Adelantados </button>
-          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton5}}" ng-click="$ctrl.getFilters(5)"  
-            ng-hide="$ctrl.principales">Contrataciones principales </button>
+          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton4}}" ng-click="$ctrl.getFilters('ADELANTADOS')"  >Adelantados </button>
+          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton5}}" ng-click="$ctrl.getFilters(5)"ng-hide="$ctrl.principales">Contrataciones principales </button>
           <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton6}}" ng-click="$ctrl.getFilters(6)"  >Contrataciones </button>
-          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton7}}" ng-click="$ctrl.getFilters(7)"  >Por pagar </button>
+          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton7}}" ng-click="$ctrl.getFilters('PORPAGAR')"  >Por pagar </button>
           <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton8}}" ng-click="$ctrl.getFilters(8)"  >Instalaciones </button>
           <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton9}}" ng-click="$ctrl.getFilters(9)"  >Cancelaciones </button>
-          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton10}}" ng-click="$ctrl.getFilters(10)"  >Por instalar </button>
+          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton10}}" ng-click="$ctrl.getFilters('PORINSTALAR')"  >Por instalar </button>
           <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton11}}" ng-click="$ctrl.getFilters(11)"  >Fuera de area </button>
           <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton12}}" ng-click="$ctrl.getFilters(12)"  >Paquetes de cortesía</button>
           <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton13}}" ng-click="$ctrl.getFilters(13)">Ciudad </button>

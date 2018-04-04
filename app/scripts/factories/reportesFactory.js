@@ -94,9 +94,8 @@ angular
 			var deferred = $q.defer();
 			var Parametros = {				
 				'reporte':{					
-					'Clv_TipSer':obj.Clv_TipSer,			
-					'Op':obj.Op,
-					'OpOrdenar':obj.OpOrdenar,				
+					'estatus':obj.estatus,			
+					'Clv_TipSer':obj.Clv_TipSer,									
 					'distribuidores':obj.distribuidores,
 					'plazas':obj.plazas,
 					'ciudades':obj.ciudades,
@@ -104,8 +103,8 @@ angular
 					'colonias':obj.colonias,
 					'servicios':obj.servicios,
 					'periodos':obj.periodos,
-					'tiposcliente':obj.tiposcliente
-
+					'tiposcliente':obj.tiposcliente,
+                    'OpOrdenar':obj.OpOrdenar
 				}	
 			};
 			var config = {
