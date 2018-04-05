@@ -56,7 +56,41 @@ angular
 			GetReporteQuejas:'/Reportes/GetReporteQuejas',
 			GetReporteAtencion:'/Reportes/GetReporteAtencion',
 			GetReportesVarios_1:'/Reportes/GetReportesVarios_1',
-			GetReportesVarios_2:'/Reportes/GetReportesVarios_2'
+			GetReportesVarios_2:'/Reportes/GetReportesVarios_2',
+			GetReportesVarios_3:'/Reportes/GetReportesVarios_3'
+		};
+
+		factory.GetReportesVarios_3 = function(obj) {
+			var deferred = $q.defer();
+			var Parametros = {				
+				'reporte':{
+					fechasolInicial:obj.fechasolInicial,
+					fechasolFinal:obj.fechasolFinal,
+					estatus:obj.estatus,
+					OpOrdenar:obj.OpOrdenar,
+					Clv_TipSer:obj.Clv_TipSer,
+					distribuidores:obj.distribuidores,
+					plazas: obj.plazas,
+					ciudades:obj.ciudades ,
+					localidades:obj.localidades ,
+					colonias:obj.colonias ,
+					servicios:obj.servicios,
+					periodos:obj.periodos,
+					tiposcliente:obj.tiposcliente,
+				  }
+			};
+			var config = {
+				headers: {
+					'Authorization': $localStorage.currentUser.token
+				}
+			};
+			$http.post(globalService.getUrl() + paths.GetReportesVarios_3, JSON.stringify(Parametros), config).then(function(response) {
+				deferred.resolve(response.data);
+			}).catch(function(response) {
+				deferred.reject(response.data);
+			});
+
+			return deferred.promise;
 		};
 		
 		factory.GetReportesVarios_2 = function(obj) {

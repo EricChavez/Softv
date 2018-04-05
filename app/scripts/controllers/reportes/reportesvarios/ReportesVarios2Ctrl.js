@@ -18,10 +18,10 @@ angular
     };
 
     function GetReport() {
-      if (vm.op === "DESCONECTADOS" || vm.op === "SUSPENDIDOS") {
+      if ( vm.Reporte === "DESCONECTADOS" ||  vm.Reporte === "SUSPENDIDOS") {
         var estatus = "";
-        estatus = vm.op === "DESCONECTADOS" ? "D" : estatus;
-        estatus = vm.op === "SUSPENDIDOS" ? "S" : estatus;
+        estatus =  vm.Reporte === "DESCONECTADOS" ? "D" : estatus;
+        estatus =  vm.Reporte === "SUSPENDIDOS" ? "S" : estatus;
         var obj = {
           estatus: estatus,
           Clv_TipSer: 2,
@@ -45,10 +45,10 @@ angular
         });
       }
 
-      if(vm.op === "ALCORRIENTE" ||
-      vm.op === "ADELANTADOS" ||
-      vm.op === "PORINSTALAR"){
-        var estatus =  vm.op       
+      if( vm.Reporte === "ALCORRIENTE" ||
+      vm.Reporte === "ADELANTADOS" ||
+      vm.Reporte === "PORINSTALAR"){
+        var estatus =   vm.Reporte       
         var obj = {
           estatus: estatus,
           Clv_TipSer: 2,
@@ -67,38 +67,45 @@ angular
           vm.url = $sce.trustAsResourceUrl(globalService.getUrlReportes() + '/Reportes/' + result.GetReportesVarios_1Result);
       }); 
       }
+      if(vm.Reporte === "INSTALACIONES" ||
+      vm.Reporte === "CONTRATACIONES" ||
+      vm.Reporte === "CANCELACIONES" ||
+      vm.Reporte === "FUERAAREA" ){
 
-      /*  var obj=  {					
-                'Clv_TipSer':2,			
-                'Op':1,
-                'OpOrdenar':1,				
-                'distribuidores':vm.responseparams.distribuidores,
-                'plazas':vm.responseparams.plazas,
-                'ciudades':vm.responseparams.ciudades,
-                'localidades':vm.responseparams.localidades,
-                'colonias':vm.responseparams.colonias,
-                'servicios':vm.responseparams.servicios,
-                'periodos':vm.responseparams.periodos,
-                'tiposcliente':vm.responseparams.tiposcliente
-            }
-            console.log(obj);
-         
-            reportesFactory.GetReportesVarios_1(obj).then(function(result){
-                vm.rptpanel=true;
-                vm.url = $sce.trustAsResourceUrl(globalService.getUrlReportes() + '/Reportes/' + result.GetReportesVarios_1Result);
-            }); */
+        var data={
+          fechasolInicial:$filter('date')(vm.fechainicio, 'yyyy/MM/dd'),
+          fechasolFinal:$filter('date')(vm.fechafin, 'yyyy/MM/dd'),
+          estatus:vm.Reporte,
+          OpOrdenar:1,
+          Clv_TipSer:2,
+          distribuidores: vm.responseparams.distribuidores,
+          plazas: vm.responseparams.plazas,
+          ciudades: vm.responseparams.ciudades,
+          localidades: vm.responseparams.localidades,
+          colonias: vm.responseparams.colonias,
+          servicios: vm.responseparams.servicios,
+          periodos: vm.responseparams.periodos,
+          tiposcliente: vm.responseparams.tiposcliente,
+        };
+
+        reportesFactory.GetReportesVarios_3(data).then(function(result){
+          vm.rptpanel=true;
+          vm.url = $sce.trustAsResourceUrl(globalService.getUrlReportes() + '/Reportes/' + result.GetReportesVarios_3Result);
+      }); 
+
+      }
     }
 
-    function getFilters(op) {
-      vm.op = op;
+    function getFilters() { 
+      vm.report = "RVDesconectados";    
       if (
-        op === "DESCONECTADOS" ||
-        op === "SUSPENDIDOS" ||
-        op === "ALCORRIENTE" ||
-        op === "ADELANTADOS" ||
-        op === "PORINSTALAR"
+        vm.Reporte === "DESCONECTADOS" ||
+        vm.Reporte === "SUSPENDIDOS" ||
+        vm.Reporte === "ALCORRIENTE" ||
+        vm.Reporte === "ADELANTADOS" ||
+        vm.Reporte === "PORINSTALAR"
       ) {
-        vm.report = "RVDesconectados";
+       
         vm.order = [
           { step: 1, function: "getplazas" },
           { step: 2, function: "getEstadosByPlaza" },
@@ -113,6 +120,25 @@ angular
         ];             
         
       }
+      if(vm.Reporte === "INSTALACIONES" ||
+        vm.Reporte === "CONTRATACIONES" ||
+        vm.Reporte === "CANCELACIONES" ||
+        vm.Reporte === "FUERAAREA" 
+      ){
+        vm.order = [
+          { step: 1, function: "getplazas" },
+          { step: 2, function: "getEstadosByPlaza" },
+          { step: 3, function: "getCiudadesByEstado" },
+          { step: 4, function: "getLocalidadesByCiudades" },
+          { step: 5, function: "getColoniasByLocalidad" },
+          { step: 6, function: "getCallesByColonia" },
+          { step: 7, function: "getServiciosRV" },
+          { step: 8, function: "getTipoCliente" },
+          { step: 9, function: "getPeriodos" },
+          { step: 10, function: "getReporBtn" }
+        ];            
+
+      }
     }
 
     var vm = this;
@@ -123,4 +149,6 @@ angular
     vm.rptpanel = false;
     vm.op = 0;
     vm.order = [];
+    vm.Reporte='DESCONECTADOS';
+    getFilters();
   });

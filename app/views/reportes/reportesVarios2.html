@@ -28,65 +28,169 @@
           <iframe src="{{$ctrl.url}}" width="1000px;" height="800px;" ps-zindex="9999"></iframe> 
       </pageslide> 
 
-    <div class="col-md-3">
-      <div class="col-md-12">
-        <select class="form-control input-sm" id="selectServicioDigitalInternet" ng-model="$ctrl.ServicioDigitalInternet" ng-change="$ctrl.cambiaServicio($ctrl.ServicioDigitalInternet);"
-          ng-options="v.Concepto for v in $ctrl.tipoServicios track by v.Clv_TipSer">
-        </select>
-      </div>
+    <div class="col-md-4">
+       
+        <div class="row">
+            <strong>Seleccione el tipo de servicio: </strong>
+            <select class="form-control input-sm" id="selectServicioDigitalInternet" ng-model="$ctrl.ServicioDigitalInternet" ng-change="$ctrl.cambiaServicio($ctrl.ServicioDigitalInternet);"
+              ng-options="v.Concepto for v in $ctrl.tipoServicios track by v.Clv_TipSer">
+            </select>
+          </div>
+          <div class="row">
+            <br>
+              <strong>Seleccione el reporte: </strong>           
+          </div>
+          <div class="row">
+              <div class="col-md-6">
+                  <div class="col-sm-12">
+                      <label class="radio-inline radio-styled radio-primary">
+                          <input type="radio" name="reportes" ng-model="$ctrl.Reporte" ng-change="$ctrl.getFilters()" value="DESCONECTADOS" ><span>Desconectados</span>
+                     </label>
+                  </div>
+      
+                  <div class="col-sm-12">
+                      <label class="radio-inline radio-styled radio-primary">               
+                          <input type="radio" name="reportes" ng-model="$ctrl.Reporte" ng-change="$ctrl.getFilters()"  value="SUSPENDIDOS" ><span>Suspendidos</span>               
+                        </label>
+                  </div>
+                  <div class="col-sm-12">
+                      <label class="radio-inline radio-styled radio-primary">               
+                          <input type="radio" name="reportes" ng-model="$ctrl.Reporte" ng-change="$ctrl.getFilters()"  value="ALCORRIENTE" ><span>Al corriente</span>
+                   </label>
+                  </div>
+                  <div class="col-sm-12">
+                      <label class="radio-inline radio-styled radio-primary">               
+                          <input type="radio" name="reportes" ng-model="$ctrl.Reporte" ng-change="$ctrl.getFilters()"  value="ADELANTADOS" ><span>Adelantados</span>
+                        </label>
+                  </div>
+                  <div class="col-sm-12">
+                      <label class="radio-inline radio-styled radio-primary">               
+                          <input type="radio" name="reportes" ng-model="$ctrl.Reporte" ng-change="$ctrl.getFilters()"  value="CONTRAPRINC" ><span>Contrataciones principales</span>
+                        </label>
+                  </div>
+                  <div class="col-sm-12">
+                      <label class="radio-inline radio-styled radio-primary">               
+                          <input type="radio" name="reportes" ng-model="$ctrl.Reporte" ng-change="$ctrl.getFilters()"  value="CONTRATACIONES" ><span>Contrataciones</span>
+                        </label>
+                  </div>
+      
+                  <div class="col-sm-12">
+                      <label class="radio-inline radio-styled radio-primary">               
+                          <input type="radio" name="reportes" ng-model="$ctrl.Reporte" ng-change="$ctrl.getFilters()"  value="PORPAGAR" ><span>Por Pagar</span>
+                        </label>
+                  </div>
+      
+                  <div class="col-sm-12">
+                      <label class="radio-inline radio-styled radio-primary">               
+                          <input type="radio" name="reportes" ng-model="$ctrl.Reporte" ng-change="$ctrl.getFilters()"  value="INSTALACIONES" ><span>Instalaciones</span>
+                        </label>
+                  </div>
+      
+              </div>
+              <div class="col-md-6">
+                  <div class="col-sm-12">
+                      <label class="radio-inline radio-styled radio-primary">               
+                          <input type="radio" name="reportes" ng-model="$ctrl.Reporte" ng-change="$ctrl.getFilters()"  value="CANCELACIONES" ><span>Cancelaciones</span>
+                        </label>
+                  </div>
+                  <div class="col-sm-12">
+                      <label class="radio-inline radio-styled radio-primary">               
+                          <input type="radio" name="reportes" ng-model="$ctrl.Reporte" ng-change="$ctrl.getFilters()"  value="PORINSTALAR" ><span>Por instalar</span>
+                        </label>
+                  </div>
+                  <div class="col-sm-12">
+                      <label class="radio-inline radio-styled radio-primary">               
+                          <input type="radio" name="reportes" ng-model="$ctrl.Reporte" ng-change="$ctrl.getFilters()"  value="FUERAAREA" ><span>Fuera de area</span>
+                        </label>
+                  </div>
+                  <div class="col-sm-12">
+                      <label class="radio-inline radio-styled radio-primary">               
+                          <input type="radio" name="reportes" ng-model="$ctrl.Reporte" ng-change="$ctrl.getFilters()"  value="PAQUETECORTESIA" ><span>Paquetes de cortesía</span>
+                        </label>
+                  </div>
+                  <div class="col-sm-12">
+                      <label class="radio-inline radio-styled radio-primary">               
+                          <input type="radio" name="reportes" ng-model="$ctrl.Reporte" ng-change="$ctrl.getFilters()"  value="CIUDAD" ><span>Ciudad</span>
+                        </label>
+                  </div>
+                  <div class="col-sm-12">
+                      <label class="radio-inline radio-styled radio-primary">               
+                          <input type="radio" name="reportes" ng-model="$ctrl.Reporte" ng-change="$ctrl.getFilters()"  value="RESCOLYSTATUS" ><span>Resumen por colonia y status</span>
+                        </label>
+                  </div>
+      
+              </div>
 
-      <div class="col-md-12">
-        <strong>Seleccione el reporte: </strong>
-        <div class="list-group">
-          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton1}}" ng-click="$ctrl.getFilters('DESCONECTADOS')"  >Desconectados </button>         
-          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton2}}" ng-click="$ctrl.getFilters('SUSPENDIDOS')"  >Suspendidos {{myButton2}}</button>
-          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton3}}" ng-click="$ctrl.getFilters('ALCORRIENTE')"  >Al corriente </button>
-          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton4}}" ng-click="$ctrl.getFilters('ADELANTADOS')"  >Adelantados </button>
-          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton5}}" ng-click="$ctrl.getFilters(5)"ng-hide="$ctrl.principales">Contrataciones principales </button>
-          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton6}}" ng-click="$ctrl.getFilters(6)"  >Contrataciones </button>
-          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton7}}" ng-click="$ctrl.getFilters('PORPAGAR')"  >Por pagar </button>
-          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton8}}" ng-click="$ctrl.getFilters(8)"  >Instalaciones </button>
-          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton9}}" ng-click="$ctrl.getFilters(9)"  >Cancelaciones </button>
-          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton10}}" ng-click="$ctrl.getFilters('PORINSTALAR')"  >Por instalar </button>
-          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton11}}" ng-click="$ctrl.getFilters(11)"  >Fuera de area </button>
-          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton12}}" ng-click="$ctrl.getFilters(12)"  >Paquetes de cortesía</button>
-          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton13}}" ng-click="$ctrl.getFilters(13)">Ciudad </button>
-          <button type="button" class="custom list-group-item btn-block {{$ctrl.myButton14}}" ng-click="$ctrl.getFilters(14)" >Resumen por colonia y status</button>
-        </div>
-      </div>
+          </div>
+        
+        <div class="row">
+          <br>
+            <div class="col-md-12">
+              <strong>Ordenar reporte por: </strong>
+            </div>
+            <div class="col-md-6">
+              <div class="radio radio-styled radio-info">
+                <label>
+                  <input type="radio" ng-model="$ctrl.ordenRadio" value="1">
+                  <span>Contrato</span>
+                </label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="radio radio-styled radio-info">
+                <label>
+                  <input type="radio" ng-model="$ctrl.ordenRadio" value="2">
+                  <span>Colonia y calle</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-4">
+              <strong>Filtrar por:</strong>
+            </div>
+            <div class="col-md-8">
+              <label class="checkbox-inline checkbox-styled">
+                <input type="checkbox" id="soloInternet" ng-model="$ctrl.soloInter" class=" filled-in chk-col-amber">
+                <span>Solo internet</span>
+              </label>
+            </div>    
+          </div>    
     </div>
-    <div class="col-md-5" ng-show="$ctrl.showfilters">
+    <div class="col-md-8" ng-show="$ctrl.showfilters">
 
       <form angular-validator-submit="$ctrl.GetReport()" name="contratoForm" novalidate angular-validator>
-        <!-- <div class="col-md-12">
-          <div class="alert alert-info" role="alert">
+         <div class="col-md-12" ng-if="$ctrl.Reporte === 'INSTALACIONES' ||
+         $ctrl.Reporte === 'CONTRATACIONES' ||
+         $ctrl.Reporte === 'CANCELACIONES' ||
+         $ctrl.Reporte === 'FUERAAREA' ">
+          
             <strong>Atencion !</strong> Selecciona un rango de fechas para el reporte.
-          </div>
-
+      
           <div class="col-md-6">
             <label>
               <i class="md md-today"></i> Fecha Inicial:</label>
-            <div class="input-group" moment-picker="$ctrl.fechainicio" format="YYYY-MM-DD">
+           
               <span class="input-group-addon">
                 <i class="octicon octicon-calendar"></i>
               </span>
-              <input class="form-control input-sm" placeholder="Fecha de inicio" validate-on="dirty" required required-message="'Este campo es obligatorio.'"
-                ng-model="$ctrl.fechainicio" ng-model-options="{ updateOn: 'blur' }">
-            </div>
+              <input type="date" class="form-control input-sm" placeholder="Fecha de inicio" validate-on="dirty" required required-message="'Este campo es obligatorio.'"
+                ng-model="$ctrl.fechainicio">
+           
           </div>
 
           <div class="col-md-6">
             <label>
               <i class="md md-today"></i> Fecha final:</label>
-            <div class="input-group" moment-picker="$ctrl.fechafin" format="YYYY-MM-DD">
+            
               <span class="input-group-addon">
                 <i class="octicon octicon-calendar"></i>
               </span>
-              <input class="form-control input-sm" placeholder="Fecha de inicio" validate-on="dirty" required required-message="'Este campo es obligatorio.'"
-                ng-model="$ctrl.fechafin" ng-model-options="{ updateOn: 'blur' }">
-            </div>
+              <input type="date" class="form-control input-sm" placeholder="Fecha de inicio" validate-on="dirty" required required-message="'Este campo es obligatorio.'"
+                ng-model="$ctrl.fechafin" >
+          
           </div>
-        </div> -->
+        </div> 
 
         <div class="col-md-12">
           <br>
@@ -112,49 +216,13 @@
       </form>
     </div>
 
-    <div class="col-md-5" >
-      <div class="col-md-12">
-        <div class="col-md-4">
-          <strong>Ordenar reporte por: </strong>
-        </div>
-        <div class="col-md-4">
-          <div class="radio radio-styled radio-info">
-            <label>
-              <input type="radio" ng-model="$ctrl.ordenRadio" value="1">
-              <span>Contrato</span>
-            </label>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="radio radio-styled radio-info">
-            <label>
-              <input type="radio" ng-model="$ctrl.ordenRadio" value="2">
-              <span>Colonia y calle</span>
-            </label>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-12">
-        <div class="col-md-4">
-          <strong>Filtrar por:</strong>
-        </div>
-        <div class="col-md-8">
-          <label class="checkbox-inline checkbox-styled">
-            <input type="checkbox" id="soloInternet" ng-model="$ctrl.soloInter" class=" filled-in chk-col-amber">
-            <span>Solo internet</span>
-          </label>
-        </div>
-
-
-
-
-      </div>
+    <div class="col-md-8" >
+   
       <div class="col-md-12" ng-show="!$ctrl.showfilters">
             <filtros-reporte report="$ctrl.report" order="$ctrl.order" 
             tipserv="$ctrl.ServicioDigitalInternet.Clv_TipSer"
             responseparams="$ctrl.responseparams" showfilters="$ctrl.showfilters">
                 </filtros-reporte>
-
       </div>
      
 
