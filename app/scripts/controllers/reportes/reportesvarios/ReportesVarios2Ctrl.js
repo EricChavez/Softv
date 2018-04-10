@@ -8,7 +8,8 @@ angular
     $filter,
     globalService,
     $sce,
-    $localStorage
+    $localStorage,
+    CatalogosFactory
   ) {
     this.$onInit = function() {
       reportesVariosFactory.mostrarTipServ().then(function(data) {
@@ -139,6 +140,31 @@ angular
         ];            
 
       }
+      if(vm.Reporte === "CIUDAD"){
+        vm.order = [
+          { step: 1, function: "getplazas" },
+          { step: 2, function: "getEstadosByPlaza" },
+          { step: 3, function: "getCiudadesByEstado" },
+          { step: 4, function: "getLocalidadesByCiudades" },
+          { step: 5, function: "getColoniasByLocalidad" },
+          { step: 6, function: "getCallesByColonia" },
+          { step: 7, function: "getServiciosRV" },
+          { step: 8, function: "getTipoCliente" },
+          { step: 9, function: "getPeriodos" },
+          { step: 10, function: "getReporBtn" }
+        ]; 
+      }
+    }
+
+    function getmotivos(){
+      var OjbMotivo = {
+          'Clv_MOTCAN': 0,
+          'MOTCAN': 0,
+          'op': 3
+        };
+        CatalogosFactory.GetBuscaMotivoCancelacion(OjbMotivo).then(function(data){
+          vm.MotivoCancelacionList = data.GetBuscaMotivoCancelacionResult;
+        });
     }
 
     var vm = this;
@@ -150,5 +176,15 @@ angular
     vm.op = 0;
     vm.order = [];
     vm.Reporte='DESCONECTADOS';
+    vm.listaStatus=[
+      {clave:'C',nombre:'Contratado'},
+      {clave:'I',nombre:'Instalado'},
+      {clave:'D',nombre:'Desconectados'},
+      {clave:'S',nombre:'Suspendidos'},
+      {clave:'F',nombre:'Fuera de area'},
+      {clave:'T',nombre:'Suspendidos Temporalmente'},
+      {clave:'B',nombre:'Cancelados'},
+    ]
     getFilters();
+    getmotivos();
   });
